@@ -12,10 +12,15 @@ export default function Home() {
   return (
     <div className="home">
       <div className="workouts">
-        {workouts &&
-          workouts.map((workout) => {
+        {workouts?.length !== 0 ? (
+          workouts?.map((workout) => {
             return <WorkoutDetails key={workout._id} workout={workout} />;
-          })}
+          })
+        ) : (
+          <>
+            <h4>No Workouts added</h4>
+          </>
+        )}
       </div>
       <WorkoutsForm />
     </div>

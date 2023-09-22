@@ -78,7 +78,7 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
-form button {
+button {
   background: var(--primary);
   border: 0;
   color: #fff;
@@ -109,4 +109,27 @@ div.error {
 
 .error{
   color: red;
+}
+
+.signup-container{
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  width:25%;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-left: 37%;
+  margin-top: 20px;
+}
+
+.header-left{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header-left-button{
+  margin-left: 15px;
 }

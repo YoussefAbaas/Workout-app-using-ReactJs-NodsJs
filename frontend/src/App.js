@@ -1,21 +1,39 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
-import { WorkoutsProvider } from "./contexts/WorkoutsContext";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import { useContext } from "react";
+import { AuthContext } from "./contexts/ِِAuthContext";
 function App() {
+  const { user } = useContext(AuthContext);
   return (
-    <WorkoutsProvider>
-      <div className="App">
-        <Router>
-          <NavBar />
-          <div className="pages">
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </div>
-        </Router>
-      </div>
-    </WorkoutsProvider>
+    <div className="App">
+      <Router>
+        <NavBar />
+        <div className="pages">
+          <Routes>
+            <Route
+              path="/"
+              element={user ? <Home /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </div>
+      </Router>
+    </div>
   );
 }
 
